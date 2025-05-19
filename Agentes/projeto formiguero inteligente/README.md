@@ -46,13 +46,13 @@ Objetivos específicos:
 ## 🗂️ Estrutura Sugerida do Repositório
 
 ```
-regressao-linear-multivariada_<SeuNome>/
+_<SeuNome>/
 │
-├─ Data/
-│   └─ ex1data2.txt
+├─ /
+│   └─ .txt
 │
-├─ RegressionMultivariate/
-│   ├─ __init__.py
+├─ /
+│   ├─ .py
 │   ├─ features_normalize.py
 │   ├─ compute_cost_multi.py
 │   ├─ gradient_descent_multi.py
@@ -77,9 +77,7 @@ regressao-linear-multivariada_<SeuNome>/
 ### ✅ Opção 1 —   (recomendado)
 
 ```bash
-conda env create -f regressao-multi.yml
-conda activate regressao-multi
-python main_multi.py
+
 ```
 
 ### 🐍 Opção 2 — Ambiente virtual 
