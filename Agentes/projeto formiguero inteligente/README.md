@@ -10,7 +10,9 @@
 ### Engenharia da Computação  
 ### Disciplina: EECP0053 – **Tópicos em Engenharia da Computação II – Fundamentos de Redes Neurais**  
 **Monitores:** Juan Pablo Mondego, e   
+
 **E-mail:** 
+
 **Semestre:** 2025.1  
 
 ---
