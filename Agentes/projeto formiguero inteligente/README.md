@@ -20,28 +20,19 @@
 ## 🎯 Objetivos
 
 
-Objetivos específicos:
+Objetivos específicos: Investigar e aplicar conceitos de modelagem baseada em agentes por meio da modificação do modelo "Ants" do NetLogo, com o intuito de compreender o comportamento emergente em sistemas complexos e o papel da inteligência coletiva em colônias de agentes.
 
-1. ***  
-   -
-   -
+1. **Analisar o funcionamento original do modelo “Ants”**  
+   - compreendendo as regras de comportamento das formigas e a dinâmica dos feromônios.
+  
+2. **Projetar e implementar modificações no modelo**  
+   - como introdução de obstáculos, predadores, ou comunicação entre agentes, para simular cenários mais realistas e desafiadores.
    - 
-2. ****  
-   - 
-   - 
-3. ****:
-   - 
-   - 
-   - 
-   - 
-   - 
-   - 
-4. **** contendo:
-   - 
-   - 
-   -
-   - 
-
+3. **Relacionar os comportamentos observados no modelo com conceitos teóricos da área de Inteligência Artificial e sistemas multiagentes**:
+   - como adaptação, aprendizado e emergência.
+   -  
+4. **Refletir sobre as vantagens e limitações da modelagem baseada em agentes** :
+   - omo ferramenta de estudo e experimentação de sistemas dinâmicos e descentralizados.
 ---
 
 
