@@ -1,0 +1,79 @@
+patches-own [
+  chemical
+  food
+  nest?
+  nest-scent
+  food-source-number
+  obstacle?    ;; true se o patch é obstáculo, false caso contrário
+]
+
+to setup
+  clear-all
+  set-default-shape turtles "bug"
+  create-turtles population [
+    set size 2
+    set color red
+  ]
+  setup-patches      ;; obstacles já configurados aqui
+  reset-ticks
+end
+
+
+to setup-patches
+  ask patches [
+    setup-nest
+    setup-food
+    set obstacle? false     ;; inicialmente nenhum patch é obstáculo
+  ]
+  
+  ;; exemplo simples: cria obstáculos numa faixa vertical no meio do mundo
+  ask patches with [ abs(pxcor) < 3 and pycor > 0 and pycor < 10 ] [
+    set obstacle? true
+    set pcolor black       ;; para visualizar obstáculo
+  ]
+  
+  ask patches [ recolor-patch ]
+end
+
+to smart-move-avoid-obstacles
+  ;; patches vizinhos livres (sem obstáculos)
+  let free-neighbors neighbors with [ not obstacle? ]
+  
+  if any? free-neighbors [
+    let best-patch one-of free-neighbors
+    face best-patch
+    if can-move? 1 [ fd 1 ]
+    stop  ;; sai para não executar outro movimento
+  ]
+  
+  ;; se não tiver caminho livre, gira para procurar outra direção
+  right random 90
+end
+to go
+  ask turtles [
+    if who >= ticks [ stop ]
+    
+    ifelse color = red [
+      look-for-food
+      smart-move-avoid-obstacles   ;; movimenta evitando obstáculos
+    ] [
+      return-to-nest
+      wiggle
+      fd 1
+    ]
+  ]
+  
+  diffuse chemical (diffusion-rate / 100)
+  
+  ask patches [
+    set chemical chemical * (100 - evaporation-rate) / 100
+    recolor-patch
+  ]
+  
+  tick
+end
+to wiggle
+  rt random 40
+  lt random 40
+  if not can-move? 1 or [obstacle?] of patch-ahead 1 [ rt 180 ]
+end
