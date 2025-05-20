@@ -9,9 +9,10 @@
 ## Universidade Federal do Maranhão  
 ### Engenharia da Computação  
 ### Disciplina: **EECP0008 - INTELIGÊNCIA ARTIFICIAL (GRADUAÇÃO)**  
-**Monitores:** Juan Pablo Mondego, e   
+**Monitores:** Juan Pablo Mondego, Matheus  Costa Alves e Diego Brasil da Silva
+  
 
-**E-mail:** 
+**E-mail:** juan.mondego@discente.ufma.br
 
 **Semestre:** 2025.1  
 
