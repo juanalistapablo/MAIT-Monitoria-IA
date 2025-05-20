@@ -1,4 +1,4 @@
-to smart-move
+to smart-move 2
   ; escolhe o patch vizinho que tem o maior valor da variável 'chemical'
   let best-patch max-one-of neighbors [chemical]
   
