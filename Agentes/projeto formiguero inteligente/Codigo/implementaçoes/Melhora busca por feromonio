@@ -1,0 +1,13 @@
+to smart-move
+  ; escolhe o patch vizinho que tem o maior valor da variável 'chemical'
+  let best-patch max-one-of neighbors [chemical]
+  
+  ; gira a tartaruga para olhar na direção do patch escolhido
+  face best-patch
+  
+  ; verifica se a tartaruga pode se mover um passo para frente sem sair do mundo
+  if can-move? 1 [
+    ; move a tartaruga um passo à frente na direção que está encarando
+    fd 1
+  ]
+end
