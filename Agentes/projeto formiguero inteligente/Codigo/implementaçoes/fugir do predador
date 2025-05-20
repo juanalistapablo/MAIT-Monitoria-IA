@@ -1,0 +1,16 @@
+to fugir-do-predador
+  let predadores-proximos tamanduas with [distance myself <  ] ; defina passos da formiga (self).
+  if any? predadores-proximos [
+    let predador-mais-proximo min-one-of predadores-proximos [distance myself]
+    let angulo-oposto (towards predador-mais-proximo +  ) mod  ;;defina angulo ângulo oposto ao tamanduá para fugir dele.
+    set heading angulo-oposto
+    fd ] ;; defina numero de passos 
+end
+
+;;Como usar:
+;;Só chame essa função dentro do seu go para as formigas:
+
+ask turtles with [color = red] [
+  fugir-do-predador
+]
+
