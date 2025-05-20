@@ -44,28 +44,18 @@ Objetivos específicos: Investigar e aplicar conceitos de modelagem baseada em a
 ## 🗂️ Estrutura Sugerida do Repositório
 
 ```
-_<SeuNome>/
+_Projeto Formigueiro inteliguente<SeuNome>/
 │
-├─ /
-│   └─ .txt
+├─ Documentos/
+│   └─ Relatorio.doc
+│   └─ Relatorio.pdf
+├─ Codigo/
+│   ├─ codigo principal.py
+│   └─ implementaçoes.texto
 │
-├─ /
-│   ├─ .py
-│   ├─ features_normalize.py
-│   ├─ compute_cost_multi.py
-│   ├─ gradient_descent_multi.py
-│   ├─ gradient_descent_multi_with_history.py
-│   └─ normal_eqn.py
-│
-├─ Figures/                 # gráficos (.png / .svg) produzidos pelo script
-│
-├─ regressao-multivariada-ex.py            # **script principal**
 ├─ README.md                # **este arquivo**
 ├─ ufma_logo.png
 ├─ eng_comp_logo.png
-├─ requirements.txt         # dependências mínimas (numpy, matplotlib)
-├─ regressao-multi.yml      # ambiente Conda (opcional)
-└─ setup_env.py             # cria venv + instala libs a partir de requirements.txt
 ```
 
 ---
