@@ -8,7 +8,7 @@
 
 ## Universidade Federal do Maranhão  
 ### Engenharia da Computação  
-### Disciplina: EECP0053 – **Tópicos em Engenharia da Computação II – Fundamentos de Redes Neurais**  
+### Disciplina: **EECP0008 - INTELIGÊNCIA ARTIFICIAL (GRADUAÇÃO)**  
 **Monitores:** Juan Pablo Mondego, e   
 
 **E-mail:** 
