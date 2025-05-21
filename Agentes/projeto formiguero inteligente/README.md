@@ -1,4 +1,4 @@
-# Projeto formigueiro inteligente – Netlogo **Samle Ants**
+# Projeto formigueiro inteligente – Netlogo **Sample Ants**
 
 ---
 
