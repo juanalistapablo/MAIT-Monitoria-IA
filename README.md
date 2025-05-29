@@ -1,4 +1,4 @@
-# MAIT-Monitoria-IA
+# Projeto M.AI.T - Mentorship using AI and Integrated Technologies
 
 ---
 
