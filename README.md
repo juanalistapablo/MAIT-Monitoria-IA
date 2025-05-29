@@ -21,24 +21,20 @@
 ## 🎯 Objetivos
 
 
-Objetivos específicos: Investigar e aplicar conceitos de modelagem baseada em agentes por meio da modificação do modelo "Ants" do NetLogo, com o intuito de compreender o comportamento emergente em sistemas complexos e o papel da inteligência coletiva em colônias de agentes.
+Investigar o uso e a integração de tecnologias relacionadas a Inteligência Artificial, gestão ágil de projetos, redes sociais e outras ferramentas tecnológicas, visando aprimorar o processo de ensino-aprendizagem dentro e fora de sala de aula. 
 
-1. **Analisar o funcionamento original do modelo “Ants”**  
+Específicos:
 
-   - compreendendo as regras de comportamento das formigas e a dinâmica dos feromônios.
+1. **Facilitar a transição dos conceitos teóricos para a prática, direcionando os alunos nas atividades e projetos através de sessões de tutoria ;**  
+
   
-3. **Projetar e implementar modificações no modelo**  
+3. **Preparar os monitores para auxiliar os alunos na gestão eficaz de compromissos e atividades, promovendo a autonomia e autorresponsabilidade;**  
 
-   - como introdução de obstáculos, predadores, ou comunicação entre agentes, para simular cenários mais realistas e desafiadores.
     
-4. **Relacionar os comportamentos observados no modelo com conceitos teóricos da área de Inteligência Artificial e sistemas multiagentes**:
+4. **Fomentar o desenvolvimento de habilidades analíticas, de resolução de problemas, liderança e comunicação ativa nos alunos e monitores;**:
 
-   - como adaptação, aprendizado e emergência.
      
-6. **Refletir sobre as vantagens e limitações da modelagem baseada em agentes** :
-
-   - omo ferramenta de estudo e experimentação de sistemas dinâmicos e descentralizados.
----
+5. ** Identificar lacunas de comunicação entre professor e alunos;** :
 
 
 ## 🗂️ Estrutura Sugerida do Repositório
@@ -61,48 +57,13 @@ _Projeto Formigueiro inteliguente<SeuNome>/
 ├─ eng_comp_logo.png
 ```
 
----
-
-## 🚀 Como Executar
-
-### ✅ Opção 1 —   (recomendado)
-
-```bash
-
-```
-
-### 🐍 Opção 2 — Ambiente virtual 
-
-```bash
-
-```
-
----
-
-## ✍️ Relatório (formato ABNT)
-
-Estrutura sugerida (não obrigatória):
-
-1. **Introdução** – problema, propósito do experimento  
-2. **Metodologia** – descrição dos métodos e das estratégias de ...  
-3. **Resultados** – inserção das imagens ou gráficos  (com legendas)  
-4. **Discussão** – interpretação dos implementados  
-5. **Conclusões** – principais lições sobre o problema 
-6. **Referências** – cite o material de apoio utilizado  
-
-
----
-
----
-
 ### Reconhecimentos e Direitos Autorais
 
 ```
-@autor:                [Seu Nome]
-@contato:              [Seu Email]
-@data última versão:   28/04/2025
+@autor:                [Juan Pablo Mondego, Matheus  Costa Alves e Diego Brasil da Silva]
+@contato:              [juan.mondego@discente.ufma.br]
+@data última versão:   28/05/2025
 @versão:               2.0
-@outros repositórios:  [URLs opcionais]
 @Agradecimentos:       Universidade Federal do Maranhão (UFMA),
                        Prof. Dr. Thales Levi Azevedo Valente,
                        colegas de curso.
@@ -112,7 +73,7 @@ Estrutura sugerida (não obrigatória):
 
 ### Licença (MIT)
 
-> Este material é resultado de um trabalho acadêmico para a disciplina *EECP0053 - TÓPICOS EM ENGENHARIA DA COMPUTAÇÃO II - FUNDAMENTOS DE REDES NEURAIS*, semestre letivo 2025.1, curso Engenharia da Computação, UFMA.
+> Este material é resultado de um trabalho acadêmico para o *	Projeto M.AI.T - Mentorship using AI and Integrated Technologies*, semestre letivo 2025.1, curso Engenharia da Computação, UFMA.
 
 ```
 MIT License
