@@ -34,7 +34,7 @@ Específicos:
 4. **Fomentar o desenvolvimento de habilidades analíticas, de resolução de problemas, liderança e comunicação ativa nos alunos e monitores;**:
 
      
-5. ** Identificar lacunas de comunicação entre professor e alunos;** :
+5. **Identificar lacunas de comunicação entre professor e alunos;** :
 
 
 ## 🗂️ Estrutura Sugerida do Repositório
