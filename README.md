@@ -40,18 +40,18 @@ Específicos:
 ## 🗂️ Estrutura Sugerida do Repositório
 
 ```
-_Projeto Formigueiro inteliguente<SeuNome>/
+_/
 │
-├─ Documentos/
-│   └─ Relatorio.doc
-│   └─ Relatorio.pdf
+├─ /
+│   └─ c
+│   └─ .pdf
 ├─ Codigo/
-│   ├─ codigo principal.py
-│   └─ implementaçoes.texto
+│   ├─ .py
+│   └─ .texto
 │
-├─ Apresentaçã0/
-│   ├─ linck do Vidio
-│   └─ Slide.pdf
+├─ /
+│   ├─ 
+│   └─ 
 ├─ README.md                # **este arquivo**
 ├─ ufma_logo.png
 ├─ eng_comp_logo.png
