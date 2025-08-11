@@ -1,0 +1,263 @@
+# JOGO DA VELHA COM BFS (Jogo da Velha com Busca em Largura)
+import pygame
+import sys
+from collections import deque
+
+# -----------------------------
+# Constantes de configuração
+# -----------------------------
+WIDTH, HEIGHT = 300, 300          # Dimensões da janela do jogo
+LINE_COLOR = (0, 0, 0)            # Cor das linhas do tabuleiro
+BG_COLOR = (255, 255, 255)        # Cor de fundo da tela
+O_COLOR = (0, 0, 255)             # Cor do círculo 'O' (IA)
+X_COLOR = (255, 0, 0)             # Cor da cruz 'X' (jogador)
+CELL_SIZE = WIDTH // 3            # Tamanho de cada célula do tabuleiro
+LINE_WIDTH = 5                    # Largura das linhas e traços
+FPS = 30                          # Taxa de quadros por segundo (controle do loop principal)
+
+# -----------------------------
+# Inicialização do pygame
+# -----------------------------
+pygame.init()                                         # Inicializa o pygame
+screen = pygame.display.set_mode((WIDTH, HEIGHT))     # Cria a janela do jogo
+pygame.display.set_caption("Jogo da Velha com BFS")   # Título da janela
+clock = pygame.time.Clock()                           # Reloj para limitar FPS
+
+
+def draw_board():
+    """
+    Desenha o tabuleiro 3x3 na tela:
+    - Preenche o fundo com a cor de fundo.
+    - Desenha as linhas horizontais e verticais.
+    """
+    screen.fill(BG_COLOR)  # Limpa a tela com a cor de fundo
+
+    # Desenha as linhas internas (não as bordas)
+    for i in range(1, 3):
+        # Linha vertical
+        pygame.draw.line(
+            screen, LINE_COLOR,
+            (i * CELL_SIZE, 0),
+            (i * CELL_SIZE, HEIGHT),
+            LINE_WIDTH
+        )
+
+        # Linha horizontal
+        pygame.draw.line(
+            screen, LINE_COLOR,
+            (0, i * CELL_SIZE),
+            (WIDTH, i * CELL_SIZE),
+            LINE_WIDTH
+        )
+
+
+def draw_symbols(board):
+    """
+    Desenha as peças no tabuleiro conforme o estado atual.
+    - 'X' é desenhado com duas linhas cruzadas.
+    - 'O' é desenhado como um círculo.
+    - Células vazias ('') não são desenhadas.
+    :param board: Lista 3x3 com o estado atual das células.
+    """
+    for row in range(3):           # Percorre as linhas (0..2)
+        for col in range(3):       # Percorre as colunas (0..2)
+            if board[row][col] == 'X':
+                # Desenha a cruz 'X' com duas linhas
+                pygame.draw.line(
+                    screen, X_COLOR,
+                    (col * CELL_SIZE + 20, row * CELL_SIZE + 20),
+                    ((col + 1) * CELL_SIZE - 20, (row + 1) * CELL_SIZE - 20),
+                    LINE_WIDTH
+                )
+                pygame.draw.line(
+                    screen, X_COLOR,
+                    (col * CELL_SIZE + 20, (row + 1) * CELL_SIZE - 20),
+                    ((col + 1) * CELL_SIZE - 20, row * CELL_SIZE + 20),
+                    LINE_WIDTH
+                )
+            elif board[row][col] == 'O':
+                # Desenha o círculo 'O' centralizado na célula
+                pygame.draw.circle(
+                    screen, O_COLOR,
+                    (col * CELL_SIZE + CELL_SIZE // 2, row * CELL_SIZE + CELL_SIZE // 2),
+                    CELL_SIZE // 3,
+                    LINE_WIDTH
+                )
+
+
+def check_winner(board, player):
+    """
+    Verifica se o jogador venceu no tabuleiro.
+    Condições de vitória:
+      - Alguma linha completa.
+      - Alguma coluna completa.
+      - Diagonal principal ou secundária completa.
+    :param board: Lista 3x3 com o estado do tabuleiro.
+    :param player: 'X' ou 'O', o jogador a ser verificado.
+    :return: True se o jogador ganhou, False caso contrário.
+    """
+    # Verifica as linhas
+    for row in board:
+        if all(cell == player for cell in row):
+            return True
+
+    # Verifica as colunas
+    for col in range(3):
+        if all(board[row][col] == player for row in range(3)):
+            return True
+
+    # Verifica as diagonais
+    if all(board[i][i] == player for i in range(3)) or \
+       all(board[i][2 - i] == player for i in range(3)):
+        return True
+
+    return False
+
+
+def bfs_best_move(board, player):
+    """
+    Aplica a Busca em Largura (BFS) para encontrar a melhor jogada possível.
+    O objetivo da IA é encontrar uma vitória rápida (se possível).
+    A BFS explora todos os movimentos possíveis e retorna o primeiro movimento
+    que leva a uma vitória.
+    :param board: Estado atual do tabuleiro (lista 3x3).
+    :param player: 'X' ou 'O', o jogador da IA.
+    :return: A coordenada (row, col) da melhor jogada ou None se não houver vitória.
+    """
+    start = (board, [])            # Estado inicial: o tabuleiro e o caminho de jogadas
+    queue = deque([start])         # Fila para a busca em largura
+    visited = set()                # Conjunto de estados já visitados (para evitar ciclos)
+
+    # Enquanto houver estados para explorar
+    while queue:
+        current_board, path = queue.popleft()  # Pega o próximo estado na fila
+
+        # Transforma o tabuleiro em uma tupla (imutável) para poder ser armazenado
+        board_tuple = tuple(map(tuple, current_board))
+        if board_tuple in visited:
+            continue
+        visited.add(board_tuple)
+
+        # Se a IA venceu neste estado, retorna o caminho (jogada) que levou até a vitória
+        if check_winner(current_board, player):
+            return path[0] if path else None
+
+        # Gera novos estados possíveis: coloca o jogador na célula vazia
+        for row in range(3):
+            for col in range(3):
+                if current_board[row][col] == '':
+                    # Cria uma cópia do tabuleiro atual para modificar
+                    new_board = [r[:] for r in current_board]
+                    new_board[row][col] = player
+                    # Envia o novo estado para a fila, com o caminho atualizado
+                    queue.append((new_board, path + [(row, col)]))
+
+    # Caso não seja encontrado um caminho para vitória
+    return None
+
+
+def show_result(message):
+    """
+    Exibe uma mensagem na tela por 2 segundos.
+    :param message: Mensagem a ser exibida.
+    """
+    font = pygame.font.Font(None, 36)                 # Define a fonte para o texto
+    text = font.render(message, True, (0, 0, 0))      # Renderiza o texto com antialiasing
+    text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))  # Centraliza o texto
+    screen.blit(text, text_rect)                      # Desenha o texto na tela
+    pygame.display.flip()                             # Atualiza a tela
+    pygame.time.wait(2000)                            # Aguarda 2 segundos para mostrar a mensagem
+
+
+def main():
+    """
+    Função principal do jogo.
+    - Controla o fluxo do jogo, alternando entre o jogador e a IA.
+    - A IA usa a função bfs_best_move para fazer a sua jogada.
+    - Exibe o resultado de vitória ou empate no final do jogo.
+    """
+    # Cria um tabuleiro vazio 3x3
+    board = [['' for _ in range(3)] for _ in range(3)]
+
+    player_turn = True  # Verdadeiro se for a vez do jogador, falso se for a vez da IA
+
+    # Loop principal do jogo
+    while True:
+        # Desenha o tabuleiro e as peças
+        draw_board()
+        draw_symbols(board)
+        pygame.display.flip()
+
+        # -----------------------------
+        # Verifica os eventos de entrada (cliques, fechamento da janela)
+        # -----------------------------
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                # Se o usuário fechar a janela, encerra o jogo
+                pygame.quit()
+                sys.exit()
+
+            # Se for a vez do jogador e houver um clique
+            if player_turn and event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos                     # Posição do clique
+                col = x // CELL_SIZE                 # Determina a coluna clicada
+                row = y // CELL_SIZE                 # Determina a linha clicada
+
+                # Se a célula estiver vazia, faz a jogada
+                if board[row][col] == '':
+                    board[row][col] = 'X'            # Coloca o 'X' do jogador
+
+                    # Verifica se o jogador venceu após essa jogada
+                    if check_winner(board, 'X'):
+                        show_result("Você ganhou!")
+                        pygame.quit()
+                        sys.exit()
+
+                    # Se o jogador não venceu, passa o turno para a IA
+                    player_turn = False
+
+        # -----------------------------
+        # Vez da IA ('O')
+        # -----------------------------
+        if not player_turn:
+            # A IA usa BFS para encontrar a melhor jogada
+            move = bfs_best_move(board, 'O')
+
+            if move:
+                row, col = move
+                board[row][col] = 'O'               # Coloca o 'O' da IA
+
+                # Atualiza a tela para mostrar a jogada da IA
+                draw_board()
+                draw_symbols(board)
+                pygame.display.flip()
+
+                pygame.time.wait(500)               # Aguarda meio segundo para efeito visual
+
+                # Verifica se a IA venceu após essa jogada
+                if check_winner(board, 'O'):
+                    show_result("Você perdeu!")
+                    pygame.quit()
+                    sys.exit()
+
+            # Após a jogada da IA, devolve o turno ao jogador
+            player_turn = True
+
+        # -----------------------------
+        # Verifica se houve empate
+        # -----------------------------
+        empty_cells = sum(row.count('') for row in board)  # Conta as células vazias
+
+        # Se o número de células vazias for 0 e ninguém venceu, houve empate
+        if empty_cells == 2 and not check_winner(board, 'X') and not check_winner(board, 'O'):
+            show_result("Deu velha!")
+            pygame.quit()
+            sys.exit()
+
+        # Limita a execução do loop ao FPS especificado
+        clock.tick(FPS)
+
+
+# Ponto de entrada do script
+if __name__ == "__main__":
+    main()
